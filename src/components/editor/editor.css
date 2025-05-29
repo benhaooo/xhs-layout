@@ -1,0 +1,67 @@
+/* 编辑器样式 */
+
+/* 空段落占位符样式 */
+.empty-paragraph[data-placeholder]::before {
+  content: attr(data-placeholder);
+  color: #aaa;
+  font-style: italic;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.7;
+  font-weight: bold;
+}
+
+/* 确保编辑器内容区域有最小高度 */
+.slate-editor-content {
+  min-height: 100px;
+}
+
+/* 浮动工具栏样式 */
+.floating-toolbar {
+  transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+  animation: toolbar-appear 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  transform-origin: center bottom;
+  position: relative;
+  z-index: 1000;
+}
+
+@keyframes toolbar-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.97);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(2px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.floating-toolbar button {
+  transition: all 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.floating-toolbar button:hover {
+  background-color: #f5f5f5;
+  color: #1890ff;
+  transform: translateY(-1px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.floating-toolbar button:active {
+  transform: translateY(1px);
+}
+
+/* 颜色选择器样式 */
+.floating-toolbar [style*="position: relative"] {
+  z-index: 1001;
+}
